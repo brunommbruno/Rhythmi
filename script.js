@@ -1,3 +1,6 @@
+const mySecretVar = process.env.SPOTIFY_CLIENT_ID;
+
+console.log(mySecretVar)
 
 // Get the hash of the url
 const hash = window.location.hash
