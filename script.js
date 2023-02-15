@@ -1,6 +1,3 @@
-new webpack.DefinePlugin({
-  'process.env.SPOTIFY_CLIENT_ID': JSON.stringify(process.env.SPOTIFY_CLIENT_ID),
-})
 
 // Get the hash of the url
 const hash = window.location.hash
@@ -20,7 +17,7 @@ let _token = hash.access_token;
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
 
-const clientId = process.env.SPOTIFY_CLIENT_ID;
+const clientId ='';
 // const redirectUri = "https://brunommbruno.github.io/Rhythmi/";
 const redirectUri = "http://localhost:5500/";
 const scopes = [
