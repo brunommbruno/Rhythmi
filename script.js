@@ -1,5 +1,7 @@
 const mySecretVar = window._env.SPOTIFY_CLIENT_ID;
 
+console.log(window._env)
+
 console.log(mySecretVar)
 
 // Get the hash of the url
