@@ -1,4 +1,4 @@
-const mySecretVar = process.env.SPOTIFY_CLIENT_ID;
+const mySecretVar = window._env.SPOTIFY_CLIENT_ID;
 
 console.log(mySecretVar)
 
@@ -21,8 +21,8 @@ let _token = hash.access_token;
 const authEndpoint = "https://accounts.spotify.com/authorize";
 
 const clientId ='';
-// const redirectUri = "https://brunommbruno.github.io/Rhythmi/";
-const redirectUri = "http://localhost:5500/";
+const redirectUri = "https://brunommbruno.github.io/Rhythmi/";
+// const redirectUri = "http://localhost:5500/";
 const scopes = [
   "streaming",
   "user-modify-playback-state",
