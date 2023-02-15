@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rhythmi.app</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-Just a Random Songscale=1" />
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Saira+Condensed&display=swap');
+
+      body {
+        font-family: 'Saira Condensed', sans-serif;
+        letter-spacing: 0.1rem;
+      }
+
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://button.glitch.me/button.js"></script>
+
+
+
+    <!-- Include the Web Playback SDK -->
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+    <!-- Include our Javascript -->
+    <script src="script.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"
+  />
+  </head>
+
+  <body class="p-4 flex flex-col justify-center h-screen bg-[#d1adcc]">
+
+        <button id="big-button" class="bg-transparent flex mx-auto tracking-[0.1rem] uppercase text-[#5f2c3e] font-bold shadow-lg hover:shadow-xl p-4 border border-2 border-[#5f2c3e]" onclick="getASong()">
+          get a random song
+        </button>
+
+        <br />
+        <iframe
+          id="embed-uri"
+          src="about:blank"
+          width="300"
+          height="380"
+          frameborder="0"
+          class="mx-auto"
+          allowtransparency="true"
+          allow="encrypted-media"
+        ></iframe>
+
+    <footer class="absolute bottom-4">
+      <p>
+        powered by
+        <a class="font-bold" href="https://developer.spotify.com/documentation/web-api/"
+          >Spotify API</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>
