@@ -20,7 +20,7 @@ let _token = hash.access_token;
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
 
-const redirectUri = "https://brunommbruno.github.io/Rhythmi/";
+const redirectUri = "https://gilded-fairy-691cac.netlify.app/";
 // const redirectUri = "http://localhost:5500/";
 const scopes = [
   "streaming",
