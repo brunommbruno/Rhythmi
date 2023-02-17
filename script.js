@@ -1,8 +1,4 @@
-// const mySecretVar = window._env.SPOTIFY_CLIENT_ID;
-
-console.log('here', window._env)
-
-// console.log(mySecretVar)
+import clientId from "./clientId.js";
 
 // Get the hash of the url
 const hash = window.location.hash
@@ -17,18 +13,18 @@ const hash = window.location.hash
   }, {});
 window.location.hash = "";
 
+let genre
+
 // Set token
 let _token = hash.access_token;
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
 
-const clientId ='';
 const redirectUri = "https://brunommbruno.github.io/Rhythmi/";
 // const redirectUri = "http://localhost:5500/";
 const scopes = [
   "streaming",
-  "user-modify-playback-state",
-  "user-library-modify"
+  "user-modify-playback-state"
 ];
 
 // If there is no token, redirect to Spotify authorization
@@ -41,51 +37,34 @@ if (!_token) {
 // Set up the Web Playback SDK
 
 let deviceId;
-let ids = [];
+let player
+
+let currentElem
+
+window.setGenre = (asd, elem) => {
+
+  currentElem?.classList.remove('active')
+  elem.classList.add('active')
+  currentElem = elem
+  console.log(asd)
+  genre = asd
+}
 
 window.onSpotifyPlayerAPIReady = () => {
-  const player = new Spotify.Player({
+  player = new Spotify.Player({
     name: "Rhythmi",
     getOAuthToken: cb => {
       cb(_token);
     }
   });
 
-  // Error handling
-  player.on("initialization_error", e => console.error(e));
-  player.on("authentication_error", e => console.error(e));
-  player.on("account_error", e => console.error(e));
-  player.on("playback_error", e => console.error(e));
-
-  // Playback status updates
-  player.on("player_state_changed", state => {
-    console.log(state);
-  });
-
   // Ready
   player.on("ready", data => {
-    console.log("Ready with Device ID", data.device_id);
     deviceId = data.device_id;
   });
-
   // Connect to the player!
   player.connect();
 };
-
-// Play a specified track on the Web Playback SDK's device ID
-function play(device_id, track) {
-  $.ajax({
-    url: "https://api.spotify.com/v1/me/player/play?device_id=" + device_id,
-    type: "PUT",
-    data: `{"uris": ["${track}"]}`,
-    beforeSend: function(xhr) {
-      xhr.setRequestHeader("Authorization", "Bearer " + _token);
-    },
-    success: function(data) {
-      console.log(data);
-    }
-  });
-}
 
 function makeid(length) {
   var result = "";
@@ -98,7 +77,8 @@ function makeid(length) {
   return result;
 }
 
-function getASong() {
+window.getASong = () => {
+  console.log(genre)
   let random_seed = makeid(2);
   let random_offset = Math.floor(Math.random() * 2000); // returns a random integer from 0 to 9
   $.ajax({
@@ -106,22 +86,14 @@ function getASong() {
       "https://api.spotify.com/v1/search?type=track&offset=" +
       random_offset +
       "&limit=1&q=" +
-      // 'genre:rock',
-      random_seed,
+      (!genre ? random_seed : 'genre:' + genre),
+      // random_seed,
     type: "GET",
+
     beforeSend: function(xhr) {
       xhr.setRequestHeader("Authorization", "Bearer " + _token);
     },
     success: function(data) {
-      console.log(data);
-      let trackUri = data.tracks.items[0].uri;
-
-      // play(deviceId, trackUri);
-      $("#current-track-name-save").attr("data-song", data.tracks.items[0].uri);
-      $("#current-track-name-save").attr(
-        "src",
-        "https://cdn.glitch.com/eed3cfeb-d097-4769-9d03-2d3a6cc7c004%2Ficons8-heart-24.png?v=1597232027543"
-      );
       $("#embed-uri").attr(
         "src",
         "https://open.spotify.com/embed/track/" + data.tracks.items[0].id

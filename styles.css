@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed&display=swap');
+
+body {
+  font-family: 'Saira Condensed', sans-serif;
+  letter-spacing: 0.1rem;
+}
+
+
+.genre-box img {
+  transition: 0.5s ease-in-out;
+}
+
+.genre-box:hover img,
+.genre-box.active img,
+footer a:hover {
+  filter: invert(44%) sepia(86%) saturate(709%) hue-rotate(154deg) brightness(95%) contrast(103%);
+  scale: 0.6;
+  transition: 0.5s ease-in-out;
+}
+
+.genre-box.soon {
+  position: relative;
+}
+
+.genre-box.soon::after {
+  content: "soon";
+  right: 1rem;
+  font-size: 2rem;
+  position: absolute;
+  letter-spacing: 1rem;
+}
+
+.genre-box img {
+  scale: 0.5;
+}
+
+.genre-box {
+  height: 5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .genre-box img {
+    scale: 0.8;
+  }
+  .genre-box:hover {
+    scale: 1;
+  }
+  .genre-box {
+    height: auto;
+  }
+  .genre-box.soon::after {
+    top: 20%;
+    right: unset;
+    font-size: 3rem;
+    transform: rotate(-45deg);
+  }
+}

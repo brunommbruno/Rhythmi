@@ -6,15 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-Just a Random Songscale=1" />
     
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Saira+Condensed&display=swap');
-
-      body {
-        font-family: 'Saira Condensed', sans-serif;
-        letter-spacing: 0.1rem;
-      }
-
-    </style>
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -22,42 +13,55 @@
     ></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://button.glitch.me/button.js"></script>
 
-
+    <link rel="stylesheet" href="styles.css" />
 
     <!-- Include the Web Playback SDK -->
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
 
     <!-- Include our Javascript -->
-    <script src="script.js" defer></script>
+    <script type="module" src="script.js" defer></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"
-  />
   </head>
 
-  <body class="p-4 flex flex-col justify-center h-screen bg-[#d1adcc]">
+  <body class="p-4 flex gap-8 pb-20 md:pb-4 flex-col-reverse md:flex-col h-screen bg-[#181D31]">
+    
+    <div class="flex flex-col md:flex-row text-white justify-center gap-2 md:gap-8 font-bold">
+      <div  class="genre-box soon pointer-events-none items-center hover:cursor-pointer flex md:flex-col border-[#F0E9D2] border-2 rounded-xl md:p-4">
+        <img class="opacity-50" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEkUlEQVR4nO2cXYhVVRTHt5r24ZRlFkEQElHgR0UUBEFkUvT5UmYYPmQ99CGjTD1FYb1YviT0EEYEQT3Yx0NOWmRS2YtBJJgGat9ZIVFZTZgzZv1icxdk46T3nrP23uucWT+4MMzDPf/1/9+77zr77L1DcBzHcRzHcRzHcRzHcRwFgD7gBmAVsB7YBewDDgJ/yt+fARuB1cBtwIxU5gNnAAvlWhvl2vtEy0H5e6dofQK4PtYQmgQwQYS/AgzTO4eAzcAiYLKCnsnyXu/Le/fKAeBlqWlCsIx8grejx3fAQ8DUClqmAg8D3yvq+Ri4NVgDOB94h3R800vhwAJgT0I9m4DzggWAxcDv5GEdcNpRtEwHBjNpGQLuyOv2kWN9/KHKzVfAJWPouRT4uoCeldl/G8T8NZRjCJh/mJ5rMn4Lx2JN1hAKffLH6k6uAuZV7La0WZlzzLfCr/KywqIc3U7Jr7p1hpJ2R4lbzbawKeVNltMdt6ToejTvcNvONtWuSCbUnN64TjOAV3u8uANrtcw/2Uif3TT+AE7SCMCHn+pcqxFAfJjiVONxjQDi0yGnGus0Athd8eIO7NQI4Gd3sjI/agQwUv36455hjQBiO+VUY79GAPHBuFONPRoBmJ4DCvXrS8m21rehwXYAgxoBPIphgu0AHtEI4EYME2wHUH9GVNbaxHWTJgl2A4ienVo7ABH5NkYJdgN4U8V8EXkPRgn1a0vF3Trud0TOkHU45gj1a0tBvHmdruP+v0KfwyChjMHH4hlV86WQOcDfGCPYDGCuegBSzBsYI9gLYH0S86WYucBfGCLYCiB6c1GyAKSgFynLdmA5MLubnTOZtT2f1Hwp6JxC60OHgfuAiT3qzcVvwNnpnP9vUQPkN39eRa256Nd3+v+LmgRszVjcvTW05uDD6Imuy939IB/INOZPrKEzNfGma7auu90XtyxDgctqakzN/XqOVls1vSFxgbNqakzJYPHN23HbKPB5wiL7aupLuVvz9GAB4MK4AsBaAMApCcf9I7bKFgW4PdFd8qya81faxBoXBosADyYoeHkNPQ8k0DMQLCNHwWiyo0qPLfcqnyhreTJYJ/bswEulWz2gX1nD2jr3I1kBjgfeUyx+BLi6h+vPV17TGrfnTglNApgGfKBowgiw9GjDkQw7/crmb4ndVGgiCUJAxvUB6XD65DVH/qc95jfX/FG9uHYIOWi++Q0OYUtrzB8VQjyMzzqbW2f+qO7I8qbv14ETQ5uRTuVZ7PECcFwYD8g09irs8FTxaeUS0FndUHKxV7z2Y2E8AyyRo4NzE0/Rvat0/SYAbs68GzOuslhQum5TAJcDP2Uw/xfgytL1moTOardvE5q/F7i4dJ2mAWbKMffafGHmvGfr0NmXpjl18RFwZum6GgWdWc63FMx/t7VTC6kBptR8uvYacELpOtpw17y6gvlPN+YRYhMAVvRg/orSelsJcOcxNo0fqrOS2umCeBKhHJI9mrgy76Zu3sOpCXAZ8MNh5sdj1a5wYzMCnAt8CnwJXODmFwA4K77cfMdxHMdxHMdxHMcJDeEfsyShpClkdSIAAAAASUVORK5CYII=">   
+        <span class="opacity-50">     Recommended</span>
+        </div>
 
-        <button id="big-button" class="bg-transparent flex mx-auto tracking-[0.1rem] uppercase text-[#5f2c3e] font-bold shadow-lg hover:shadow-xl p-4 border border-2 border-[#5f2c3e]" onclick="getASong()">
+        <div onclick="window.setGenre('r-n-b', this)" class="genre-box items-center hover:cursor-pointer flex md:flex-col border-[#F0E9D2] border-2 rounded-xl md:p-4">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAC+0lEQVR4nO2dy4rUQBSGC0Vd6BN4Q5mdlzdw4wsMPoaijs8wC91oi4M3RPAB3CmIgpeHmFFpGF/ApY6Ii24+CUlD05tOKqlzksr/QcNAD11/na+qOpdOEoIQQgghhBBCCCGEEEIIIUYP6fkDTIEPwC3gTKqiA2eB21Vb06rtpHQR2po58Bo410nVyz6cAl4AM+vOdBHei9/AZgf5rwEHXp0YsoDFbNhqkf1O9RluDF0AVQE3I0e+a/FzEbBYjk42yHzac9nJUUDBywaZX9ETchIwK0Z2zU1N862dMQgouFkj7xY9IjcB72rkfU+PyE3AtEbefXpEbgIOauTtxdZPrgLILa8EJEYCnJEAZyTAGQlwRgKckQBnJMAZCXBGApyRAGckwBkJcEYCnJEAZyTAGQlwRgKckQBnJMAZCXBGApyRAGckoHt2qws/LgLHQ2roGcEv7z/gBnAoedGNOhSFU96i+FdtKm7ToWiCT97rNtW261A0wT7vrvmyk7hDrQj2eaOv0uwEekawz3vBptJ2HWpFsM97wqbSdh1qRTDOm7o9CViDBKygGeBM0BIkAcukHlD6El6DBKzQ9fxM3d66z9cMWIMErNDJsG8wQluP8LYNWBOM80rAChLgTBjhDOjVzS+s6YOAb4yY0AMBjxgnc2DSBwGX+nQPNiN+Aldq1ietgKqRp4yHH8BGg9qYCDgKfGYcI3+jYW3SC1iS8CTj5Whed9lxEbDUYPGTvIfAXmabqJPIetgK8ADYjijodqIsl4Ed4Gud5w+EHAAOA28bFP9N1z+mAo4Bz5reEDzkAqWEe2sKULx3t/jfBMX/0qTw2QlYAJwHHgDfgb/Vq9hbv1+8FxIAPI8pfpYCrKnW/OjnEJgHzg3KL9xovPMPHloejPTOP3houa/jnX/wUD4+JZZf3vnHvgTteecfPLQ7HxJ1eEN0cz5k5n5xRy5QHgVuyo537mygPBT/qUHxPwJHvHPnKOHxmuVoVu24qfghnYjV8yHFq/h7ErPm/wcTzaMWg0eRxgAAAABJRU5ErkJggg==">     
+             R&B
+          </div>
+
+          <div onclick="window.setGenre('alternative', this)" class="genre-box items-center hover:cursor-pointer flex md:flex-col border-[#F0E9D2] border-2 rounded-xl md:p-4">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEAklEQVR4nO3cW6hVRRzH8b+iiJygQhBESgohkhAvlFYWmhU9iNFTIoJg+qBgWeSD9bIIUkQjwfdIoSI0HwTFyEoEQcULmCK+iGKIiZWZGmWnrwyMHfWsvc9as2b2rLXm/4Hz5GHc8/vPWZe5bBGllFJKKaWUUkoppdT/gCnAFRwMtKJ6Hr4WIHL4WoDI4WsBIoevBYgcvhYgcvhagMjhawHChP878HTRttUQNPzmhH8VeCbm520VNHwNP0mUH/kzYn/m1kDDb0z4fwAzJXXAGOAhD+1MA34tEf6zkipgOLAQOGED+RfYDzzl2J6GXyKsicDBDiPzBvBEwPCvAc9JqoDXgD+HCGlXwPCfl1QB84G/CwR1PUD4puizJFXA5AIj/24jPIf/gqQKGAEco5w+T4+a5p4yR1IGrKC8MR5G/nXgRUkZMAw441CAcTlt6ch3KMBM3DyW09blEped2RXGTXsAHzgWYFJOW78VDD/ta/7dgK2OBXglp62zBcJ/KU5Pawr41rEAb+W09UOX378JzI3TyxoDTjsWIMtp69Mu4b8cp4c1Zm6kwH+OBfgsp703O4Q/6HKVPPv4+Q3uDucUoO++FzANv8PIHwt8QTW3gAdy2l5i//0v4NWkRzrwMPAG8BHwJbDHTjn8gx8LOvy/y8ysqqQIGAUsAr63iygh7Ynd39oARgIrgZ/prRmSOrOCBJz0GGpmf4o4NNTUdNufZNbYG6K38GWg/aJFWCuJzuF/7jH4Ti9XRYvwviS2Y+ErAofvUATzmcZK2wEbPIfftQAli2AWWTYB080lUlq6a8F1+qBXRbjjF2CnLcgq4HVgvDQVMBq4QFiZ5yLcr9+8qEkTAavpjSxwEc5JQ2+8F3r4nJ8FLMARaRqzklSx04OCdSkC1cM3lkvTAOs8dNwl0KzE7xZxykybSNMA31XseJVLSuYp/Kt5i/mN4Lh3554Qh2g/IywzSThVmgq46CGEGEW4BnwCPChN5nGaOWQRbgJf2wWgt82KWLc9pI1iHt08FSBUEX4CJkhbAds8FqBrEShfAHOm4HFpM+AdzwXILQJuo3+HJHKAIoTMw/X/Y0kBcJwwsoo339WSAmAp9bRMElqGNK/ydTNbUmEXNeqkv9NxpdYCdlMfxyTRvZ2XqIcPJUV2z2dst4BHJVV2kiumLZIyuzOu6jbzKhNvg05KJsfulDhA770Xu++1Yb5MCfixh+HvbOWmKw/nAsxcfGiH8k7GqIGtKxsD7pzb5+Ory1oPmBfgPWGz+SuL3bem3Rc2eTgPdib5w3YVC/GIfV8o+5XwR4HFyZ5+CTSTahbJ1wN7gfN2x0K//ZINc8RpO/Au8GTsz6uUUkoppZRSSimllARyG9iSnkjH7ZhYAAAAAElFTkSuQmCC">            
+             Alternative
+            </div>
+
+            <div onclick="window.setGenre(null, this)" class="genre-box items-center hover:cursor-pointer flex md:flex-col border-[#F0E9D2] border-2 rounded-xl md:p-4">
+              <img src="data:image/png;base64,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">
+              Random
+            </div>
+    </div>
+
+        <button id="big-button" class="bg-transparent flex mx-auto tracking-[0.1rem] hover:shadow-sm uppercase text-[#F0E9D2] rounded-xl font-bold shadow-lg hover:shadow-xl p-4 border border-2 border-[#F0E9D2]" onclick="window.getASong()">
           get a random song
         </button>
 
-        <br />
         <iframe
           id="embed-uri"
           src="about:blank"
-          width="300"
-          height="380"
           frameborder="0"
-          class="mx-auto"
+          class="mx-auto w-4/5 h-[15rem] md:h-96"
           allowtransparency="true"
-          allow="encrypted-media"
+          allow="encrypted-media autoplay"
         ></iframe>
 
-    <footer class="absolute bottom-4">
+    <footer class="absolute text-white bottom-4">
       <p>
         powered by
         <a class="font-bold" href="https://developer.spotify.com/documentation/web-api/"
@@ -65,5 +69,6 @@
         >
       </p>
     </footer>
+    
   </body>
 </html>
